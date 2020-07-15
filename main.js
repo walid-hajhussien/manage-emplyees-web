@@ -1,1 +1,1 @@
-console.log(555555555)
+let app = angular.module("app", ['ngRoute']);

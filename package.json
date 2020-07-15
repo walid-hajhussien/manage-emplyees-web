@@ -18,6 +18,7 @@
   "homepage": "https://github.com/walid-hajhussien/manage-emplyees#readme",
   "dependencies": {
     "angular": "^1.8.0",
+    "angular-route": "^1.8.0",
     "bootstrap": "^3.4.1",
     "jquery": "^3.5.1"
   }
