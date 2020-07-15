@@ -1,3 +1,5 @@
 app.controller("homeController", function ($scope) {
-    console.log(5555555555555555555555555555)
+    $("body").css('background-image','url(assets/img/home.jpg)');
+
+
   });
