@@ -1,0 +1,24 @@
+{
+  "name": "manage-emplyees",
+  "version": "1.0.0",
+  "description": "sample application using AngularJs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/walid-hajhussien/manage-emplyees.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/walid-hajhussien/manage-emplyees/issues"
+  },
+  "homepage": "https://github.com/walid-hajhussien/manage-emplyees#readme",
+  "dependencies": {
+    "angular": "^1.8.0",
+    "bootstrap": "^3.4.1",
+    "jquery": "^3.5.1"
+  }
+}
