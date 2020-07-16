@@ -1,3 +1,160 @@
-<p>edit employee</p>
-<button ng-click="vm.goBack()">Back</button>
-<a href="/employeeList"></a>
+<header title="vm.title" mode="vm.mode"></header>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          {{vm.mode| uppercase}}
+          <div class="pull-right">
+            <button
+              ng-click="vm.onSave(employeeForm)"
+              ng-disabled="employeeForm.$invalid"
+              class="btn btn-default"
+              type="button"
+              style="width: 35px; padding: 2px;"
+            >
+              <span class="glyphicon glyphicon-floppy-disk"></span>
+            </button>
+          </div>
+        </div>
+
+        <div class="panel-body">
+          <form name="employeeForm">
+            <div class="row" style="margin-top: 15px;">
+              <div class="col-md-12" style="margin-bottom: 15px;">
+                <div class="col-md-4">
+                  <label class="label-floating" for="firstName"
+                    ><span style="color: red; font-size: medium;">*&nbsp</span
+                    >First Name</label
+                  >
+                  <input
+                    name="firstName"
+                    id="firstName"
+                    type="search"
+                    class="form-control"
+                    ng-required="true"
+                    ng-model="vm.firstName"
+                  />
+                  <small
+                    class="warning"
+                    ng-show="employeeForm.firstName.$touched && employeeForm.firstName.$invalid"
+                    >First name is mandatory</small
+                  >
+                </div>
+
+                <div class="col-md-4">
+                  <label class="label-floating" for="lastName"
+                    ><span style="color: red; font-size: medium;">*&nbsp</span
+                    >Last Name</label
+                  >
+                  <input
+                    name="lastName"
+                    id="lastName"
+                    type="search"
+                    class="form-control"
+                    ng-required="true"
+                    ng-model="vm.lastName"
+                  />
+                  <small
+                    class="warning"
+                    ng-show="employeeForm.lastName.$touched && employeeForm.lastName.$invalid"
+                    >Last name is mandatory</small
+                  >
+                </div>
+                <div class="col-md-4">
+                  <label class="label-floating" for="email"
+                    ><span style="color: red; font-size: medium;">*&nbsp</span
+                    >Email</label
+                  >
+                  <input
+                    name="email"
+                    id="email"
+                    type="email"
+                    class="form-control"
+                    ng-required="true"
+                    ng-model="vm.email"
+                  />
+                  <small
+                    class="warning"
+                    ng-show="employeeForm.email.$touched && employeeForm.email.$invalid"
+                    >Email is incorrect</small
+                  >
+                </div>
+              </div>
+              <div class="col-md-12" style="margin-bottom: 15px;">
+                <div class="col-md-4">
+                  <label class="label-floating" for="phone">Phone</label>
+                  <input
+                    name="phone"
+                    id="phone"
+                    type="text"
+                    class="form-control"
+                    ng-model="vm.phone"
+                    ng-pattern="/^[0-9]*$/"
+                  />
+                  <small
+                    class="warning"
+                    ng-show="employeeForm.phone.$touched && employeeForm.phone.$invalid"
+                    >phone number is mandatory</small
+                  >
+                </div>
+
+                <div class="col-md-4">
+                  <label class="label-floating" for="age">Age</label>
+                  <input
+                    name="age"
+                    id="age"
+                    type="number"
+                    class="form-control"
+                    ng-model="vm.age"
+                  />
+                </div>
+                <div class="col-md-4">
+                  <label class="label-floating" for="eyeColor">Eye Color</label>
+                  <input
+                    name="eyeColor"
+                    id="eyeColor"
+                    type="search"
+                    class="form-control"
+                    ng-model="vm.eyeColor"
+                  />
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="col-md-6">
+                  <label class="label-floating" for="address"
+                    ><span style="color: red; font-size: medium;">*&nbsp</span
+                    >Address</label
+                  >
+                  <input
+                    ng-required="true"
+                    name="address"
+                    id="address"
+                    type="search"
+                    class="form-control"
+                    ng-model="vm.address"
+                  />
+                  <small
+                    class="warning"
+                    ng-show="employeeForm.address.$touched && employeeForm.address.$invalid"
+                    >address is mandatory</small
+                  >
+                </div>
+                <div class="col-md-6">
+                  <label class="label-floating" for="about">About</label>
+                  <input
+                    name="about"
+                    id="about"
+                    type="search"
+                    class="form-control"
+                    ng-model="vm.about"
+                  />
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

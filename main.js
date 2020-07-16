@@ -25,14 +25,10 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
   $stateProvider.state("edit", {
     url: "/edit/:id",
     component: "employeeSetup",
-    params: {
-      id: "",
-    },
     resolve: {
-      data: function (employeeService) {
-        return employeeService.setList().then((data) => {
-          return data;
-        });
+      employee: function (employeeService, $stateParams) {
+        let id = $stateParams.id;
+        return employeeService.getCustomerById(id);
       },
     },
   });
