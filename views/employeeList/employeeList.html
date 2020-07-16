@@ -1,1 +1,87 @@
-<p>Employee List </p>
+<header title="'Employee List'" mode="'list'"></header>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          Employee List
+          <div class="pull-right">
+            <button
+              ng-click="vm.onAdd()"
+              class="btn btn-default"
+              type="button"
+              style="width: 35px; padding: 2px;"
+            >
+              <span class="glyphicon glyphicon-plus"></span>
+            </button>
+          </div>
+        </div>
+
+        <div class="panel-body">
+          <form>
+            <div class="input-group" style="width: 50%; margin: auto;">
+              <input
+                type="search"
+                class="form-control"
+                placeholder="Search..."
+                ng-model="vm.search"
+              />
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="button">
+                  <span
+                    class="glyphicon glyphicon-search"
+                    aria-hidden="true"
+                  ></span>
+                </button>
+              </span>
+            </div>
+          </form>
+
+          <div class="row" style="margin-top: 15px;">
+            <div class="col-md-12">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Full name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">
+                      Edit
+                    </th>
+                    <th scope="col">
+                      Delete
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr
+                    ng-repeat="employee in vm.employeeList  | filter:{ address: vm.search} track by $index"
+                  >
+                    <th scope="row">{{$index + 1}}</th>
+                    <td>{{employee.name.first + ' ' + employee.name.last}}</td>
+                    <td>{{employee.email | uppercase}}</td>
+                    <td>{{employee.phone}}</td>
+                    <td>{{employee.address}}</td>
+                    <td>
+                      <button ng-click="vm.onEdit()">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                      </button>
+                    </td>
+                    <td>
+                      <button ng-click="vm.onDelete()">
+                        <span class="glyphicon glyphicon-trash"></span>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
