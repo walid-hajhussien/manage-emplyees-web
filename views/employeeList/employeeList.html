@@ -44,10 +44,18 @@
                 <thead>
                   <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Full name</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Phone</th>
-                    <th scope="col">Address</th>
+                    <th ng-click="vm.onChangeSort('name.first')" scope="col">
+                      Full name
+                    </th>
+                    <th ng-click="vm.onChangeSort('email')" scope="col">
+                      Email
+                    </th>
+                    <th ng-click="vm.onChangeSort('phone')" scope="col">
+                      Phone
+                    </th>
+                    <th ng-click="vm.onChangeSort('address')" scope="col">
+                      Address
+                    </th>
                     <th scope="col">
                       Edit
                     </th>
@@ -58,7 +66,7 @@
                 </thead>
                 <tbody>
                   <tr
-                    ng-repeat="employee in vm.employeeList  | filter:{ address: vm.search} track by $index"
+                    ng-repeat="employee in vm.employeeList  | filter:{ address: vm.search} | orderBy:vm.sort:vm.sortType track by $index"
                   >
                     <th scope="row">{{$index + 1}}</th>
                     <td>{{employee.name.first + ' ' + employee.name.last}}</td>
@@ -71,7 +79,7 @@
                       </button>
                     </td>
                     <td>
-                      <button ng-click="vm.onDelete()">
+                      <button ng-click="vm.onDelete(employee._id)">
                         <span class="glyphicon glyphicon-trash"></span>
                       </button>
                     </td>

@@ -4,11 +4,14 @@ app.controller("employeeListController", function ($scope, employeeService) {
   // properties
   vm.employeeList = [];
   vm.search = "";
+  vm.sort = "";
+  vm.sortType = false;
 
   // methods
   vm.onAdd = onAdd;
   vm.onDelete = onDelete;
   vm.onEdit = onEdit;
+  vm.onChangeSort = onChangeSort;
 
   this.$onInit = function () {
     vm.employeeList = employeeService.getList();
@@ -21,13 +24,23 @@ app.controller("employeeListController", function ($scope, employeeService) {
   }
 
   // delete employee
-  function onDelete() {
-    console.log("delete");
+  function onDelete(id) {
+    vm.employeeList = employeeService.deleteCustomer(id);
   }
 
   // Edit employee
   function onEdit() {
     console.log("edit");
+  }
+
+  // change list sort
+  function onChangeSort(columnName) {
+    if (vm.sort === columnName) {
+      vm.sortType = !vm.sortType;
+    } else {
+      vm.sortType = false;
+      vm.sort = columnName;
+    }
   }
 
   // style
