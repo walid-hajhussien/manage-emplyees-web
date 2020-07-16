@@ -1,4 +1,8 @@
-app.controller("employeeSetupController", function ($state, $stateParams) {
+app.controller("employeeSetupController", function (
+  $state,
+  $stateParams,
+  employeeService
+) {
   var vm = this;
 
   // properties
@@ -36,6 +40,29 @@ app.controller("employeeSetupController", function ($state, $stateParams) {
   };
 
   function onSave(form) {
-    console.log(form);
+    if (vm.mode === "edit") {
+      vm.employee.name.first = vm.firstName;
+      vm.employee.name.last = vm.lastName;
+      vm.employee.address = vm.address;
+      vm.employee.email = vm.email;
+      vm.employee.phone = vm.phone;
+      vm.employee.age = vm.age;
+      vm.employee.eyeColor = vm.eyeColor;
+      vm.employee.about = vm.about;
+      employeeService.editCustomer(vm.employee);
+      $state.go("employeeList");
+    } else {
+      let obj = { name: {} };
+      obj.name.first = vm.firstName;
+      obj.name.last = vm.lastName;
+      obj.address = vm.address;
+      obj.email = vm.email;
+      obj.phone = vm.phone;
+      obj.age = vm.age;
+      obj.eyeColor = vm.eyeColor;
+      obj.about = vm.about;
+      employeeService.addCustomer(obj);
+      $state.go("employeeList");
+    }
   }
 });

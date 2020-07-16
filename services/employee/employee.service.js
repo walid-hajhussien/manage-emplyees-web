@@ -1,8 +1,10 @@
-angular.module("app").service("employeeService", function ($http,$q) {
+angular.module("app").service("employeeService", function ($http, $q) {
   let self = this;
 
   // properties
   let _list = [];
+  let _counter = 0;
+  let _isRetrieve = false;
 
   // methods
   self.setList = setList;
@@ -16,10 +18,13 @@ angular.module("app").service("employeeService", function ($http,$q) {
   // get the data from a backend then saves the data to a local list
   function setList() {
     let deferred = $q.defer();
-    
+    if (_isRetrieve) {
+      deferred.resolve(_list);
+    } else {
       $http.get("/assets/mock-data/data.json").then(
         (response) => {
           _list = response.data;
+          _isRetrieve = true;
           deferred.resolve(_list);
         },
         (error) => {
@@ -27,9 +32,9 @@ angular.module("app").service("employeeService", function ($http,$q) {
           deferred.reject(_list);
         }
       );
+    }
 
-      return deferred.promise;
-   
+    return deferred.promise;
   }
 
   // get the data from saved list
@@ -46,6 +51,7 @@ angular.module("app").service("employeeService", function ($http,$q) {
 
   // Add Customer: add a customer to the list
   function addCustomer(newCustomer) {
+    newCustomer._id = _counter++;
     _list.push(newCustomer);
   }
 
@@ -59,7 +65,7 @@ angular.module("app").service("employeeService", function ($http,$q) {
   //delete Customer
   function deleteCustomerByIndex(index) {
     console.log(index);
-    _list.splice(index,1);
+    _list.splice(index, 1);
     return _list;
   }
 
@@ -70,5 +76,4 @@ angular.module("app").service("employeeService", function ($http,$q) {
     });
     return _list;
   }
-
 });
