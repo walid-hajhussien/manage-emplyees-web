@@ -1,6 +1,5 @@
 app.controller("homeController", function ($scope, $state) {
   var vm = this;
-  
 
   // properties
 
@@ -8,9 +7,6 @@ app.controller("homeController", function ($scope, $state) {
   vm.onEnter = onEnter;
 
   function onEnter() {
-    $state.go("/employeeList");
+    $state.go("employeeList");
   }
-
-  // style
-  $("body").css("background-image", "url(assets/img/home.jpg)");
 });

@@ -1,4 +1,8 @@
-app.controller("employeeListController", function ($scope, employeeService,$state) {
+app.controller("employeeListController", function (
+  $scope,
+  employeeService,
+  $state
+) {
   var vm = this;
 
   // properties
@@ -15,24 +19,24 @@ app.controller("employeeListController", function ($scope, employeeService,$stat
 
   this.$onInit = function () {
     vm.employeeList = employeeService.getList();
-    console.log(vm.employeeList);
+    console.log(employeeService);
   };
 
   // add new employee
   function onAdd() {
-    $state.go("/new");
+    $state.go("new");
   }
 
   // delete employee
-  function onDelete(id) {
-    vm.employeeList = employeeService.deleteCustomer(id);
+  function onDelete(index) {
+    vm.employeeList = employeeService.deleteCustomerByIndex(index);
   }
 
   // Edit employee
   function onEdit(employeeId) {
-    console.log(employeeId)
-    $state.go("/edit",{
-      id:employeeId
+    console.log(employeeId);
+    $state.go("edit", {
+      id: employeeId,
     });
   }
 
@@ -45,7 +49,4 @@ app.controller("employeeListController", function ($scope, employeeService,$stat
       vm.sort = columnName;
     }
   }
-
-  // style
-  $("body").css("background-image", "");
 });

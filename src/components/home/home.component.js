@@ -1,5 +1,5 @@
 app.component("home", {
-    templateUrl: "/views/home/home.html",
+    templateUrl: "src/views/home/home.html",
     controller: "homeController",
     controllerAs: "vm",
   });

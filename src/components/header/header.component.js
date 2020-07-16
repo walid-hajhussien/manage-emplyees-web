@@ -1,5 +1,5 @@
 app.component("header", {
-    templateUrl: "/views/header/header.html",
+    templateUrl: "src/views/header/header.html",
     controller: "headerController",
     controllerAs: "vm",
     bindings:{

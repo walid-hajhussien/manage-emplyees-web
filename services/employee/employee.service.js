@@ -1,62 +1,74 @@
-angular.module("app").service("employeeService", function ($http) {
-  let vm = this;
+angular.module("app").service("employeeService", function ($http,$q) {
+  let self = this;
 
   // properties
-  vm.list = [];
+  let _list = [];
 
   // methods
-  vm.setList = setList;
-  vm.getList = getList;
-  vm.getCustomerById = getCustomerById;
-  vm.addCustomer = addCustomer;
-  vm.editCustomer = editCustomer;
-  vm.deleteCustomer = deleteCustomer;
+  self.setList = setList;
+  self.getList = getList;
+  self.getCustomerById = getCustomerById;
+  self.addCustomer = addCustomer;
+  self.editCustomer = editCustomer;
+  self.deleteCustomerById = deleteCustomerById;
+  self.deleteCustomerByIndex = deleteCustomerByIndex;
 
   // get the data from a backend then saves the data to a local list
   function setList() {
-    return new Promise((resolve, reject) => {
+    let deferred = $q.defer();
+    
       $http.get("/assets/mock-data/data.json").then(
         (response) => {
-          vm.list = response.data;
-          resolve(vm.list);
+          _list = response.data;
+          deferred.resolve(_list);
         },
         (error) => {
-          vm.list = [];
-          reject(vm.list);
+          _list = [];
+          deferred.reject(_list);
         }
       );
-    });
+
+      return deferred.promise;
+   
   }
 
   // get the data from saved list
   function getList() {
-    return vm.list;
+    return _list;
   }
 
   // retrieves a customer from the saved list, filter should be using customer ID
   function getCustomerById(id) {
-    return vm.list.find((value) => {
+    return _list.find((value) => {
       return value._id === id;
     });
   }
 
   // Add Customer: add a customer to the list
   function addCustomer(newCustomer) {
-    vm.list.push(customer);
+    _list.push(newCustomer);
   }
 
   // edit an existing customer
   function editCustomer(updateCustomer) {
-    vm.list = vm.list.map((customer) => {
+    _list = _list.map((customer) => {
       return updateCustomer._id === customer._id ? updateCustomer : customer;
     });
   }
 
   //delete Customer
-  function deleteCustomer(id) {
-    vm.list = vm.list.filter((value) => {
+  function deleteCustomerByIndex(index) {
+    console.log(index);
+    _list.splice(index,1);
+    return _list;
+  }
+
+  //delete Customer
+  function deleteCustomerById(id) {
+    _list = _list.filter((value) => {
       return value._id !== id;
     });
-    return vm.list;
+    return _list;
   }
+
 });

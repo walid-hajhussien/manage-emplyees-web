@@ -1,51 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Manage-Employee</title>
     <!-- bootstrap css -->
-    <link  rel="stylesheet"  href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link
+      rel="stylesheet"
+      href="node_modules/bootstrap/dist/css/bootstrap.min.css"
+    />
     <!-- global style -->
-    <link rel="stylesheet" href="/assets/style/style.css">
-    <base href="/">
-</head>
-<body ng-app="app">
+    <link rel="stylesheet" href="assets/style/style.css" />
+    <base href="/" />
+  </head>
+  <body ng-app="app">
+    <div>
+      <ui-view></ui-view>
+    </div>
 
-<div>
-    <ui-view></ui-view>
-</div>
+    <!-- Angular Js -->
+    <script
+      type="text/javascript"
+      src="node_modules/angular/angular.js"
+    ></script>
 
-
-<!-- Angular Js -->
-<script type="text/javascript" src="/node_modules/angular/angular.js"></script>
-<!-- Angular Route -->
-<script type="text/javascript" src="/node_modules/angular-route/angular-route.min.js"></script>
-<!--Angular ui route-->
-<script type="text/javascript" src="/node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
-    
-    <!-- jquery -->
-    <script type="text/javascript" src="/node_modules/jquery/dist/jquery.min.js"></script>
-    <!-- bootstrap js-->
-    <script type="text/javascript" src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!--Angular ui route-->
+    <script
+      type="text/javascript"
+      src="node_modules/angular-ui-router/release/angular-ui-router.min.js"
+    ></script>
 
     <!-- Main -->
-    <script src="/main.js"></script>
+    <script src="main.js"></script>
 
     <!-- Services -->
-    <script type="text/javascript" src="/services/employee/employee.service.js"></script>
+    <script
+      type="text/javascript"
+      src="services/employee/employee.service.js"
+    ></script>
 
     <!-- controllers -->
-    <script type="text/javascript" src="/controllers/home/home.controller.js"></script>
-    <script type="text/javascript" src="/controllers/employeeList/employeeList.controller.js"></script>
-    <script type="text/javascript" src="/controllers/header/header.controller.js"></script>
-    <script type="text/javascript" src="/controllers/editEmployee/editEmployee.controller.js"></script>
+    <script
+      type="text/javascript"
+      src="src/controllers/home/home.controller.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="src/controllers/employeeList/employeeList.controller.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="src/controllers/header/header.controller.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="src/controllers/employeeSetup/employeeSetup.controller.js"
+    ></script>
 
     <!-- components -->
-    <script type="text/javascript" src="/components/home/home.component.js"></script>
-    <script type="text/javascript" src="/components/employeeList/employeeList.component.js"></script>
-    <script type="text/javascript" src="/components/header/header.component.js"></script>
-    <script type="text/javascript" src="/components/editEmployee/editEmployee.component.js"></script>
-
-</body>
+    <script
+      type="text/javascript"
+      src="src/components/home/home.component.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="src/components/employeeList/employeeList.component.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="src/components/header/header.component.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="src/components/employeeSetup/employeeSetup.component.js"
+    ></script>
+  </body>
 </html>
