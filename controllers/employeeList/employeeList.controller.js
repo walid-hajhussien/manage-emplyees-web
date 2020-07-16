@@ -1,4 +1,4 @@
-app.controller("employeeListController", function ($scope, employeeService) {
+app.controller("employeeListController", function ($scope, employeeService,$state) {
   var vm = this;
 
   // properties
@@ -20,7 +20,7 @@ app.controller("employeeListController", function ($scope, employeeService) {
 
   // add new employee
   function onAdd() {
-    console.log("add");
+    $state.go("/new");
   }
 
   // delete employee
@@ -29,8 +29,11 @@ app.controller("employeeListController", function ($scope, employeeService) {
   }
 
   // Edit employee
-  function onEdit() {
-    console.log("edit");
+  function onEdit(employeeId) {
+    console.log(employeeId)
+    $state.go("/edit",{
+      id:employeeId
+    });
   }
 
   // change list sort

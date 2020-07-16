@@ -9,7 +9,7 @@ app.config(function($stateProvider, $urlRouterProvider,$locationProvider){
         component:"home",
     });
 
-    // Home State
+    // employeeList State
     $stateProvider.state("/employeeList",{
         url:"/employeeList",
         component:"employeeList",
@@ -21,6 +21,29 @@ app.config(function($stateProvider, $urlRouterProvider,$locationProvider){
                   })
             }
         }
+    });
+
+    // editEmployee
+    $stateProvider.state("/edit",{
+        url:"/edit/:id",
+        component:"editEmployee",
+        params:{
+            id:''
+        },
+        resolve:{
+            data:function(employeeService){
+            
+                return employeeService.setList().then((data)=>{
+                    return data
+                  })
+            }
+        }
+    });
+
+      // add new Employee
+      $stateProvider.state("/new",{
+        url:"/new",
+        component:"editEmployee"
     });
 
     // url not found redirect to home
