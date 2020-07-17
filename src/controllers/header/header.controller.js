@@ -1,19 +1,20 @@
 app.controller("headerController", function ($scope, $state, $state) {
-  var vm = this;
+    var vm = this;
 
-  // properties
+    // properties
 
-  // methods
-  vm.onNavigate = onNavigate;
+    // methods
+    vm.onNavigate = onNavigate;
 
-  this.$onInit = function () {};
+    this.$onInit = function () {
+    };
 
-  // navigate to the new route
-  function onNavigate() {
-    if (vm.mode === "list") {
-      $state.go("home");
-    } else {
-      $state.go("employeeList");
+    // navigate to the new route
+    function onNavigate() {
+        if (vm.mode === "list") {
+            $state.go("home");
+        } else {
+            $state.go("employeeList");
+        }
     }
-  }
 });

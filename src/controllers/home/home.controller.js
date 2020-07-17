@@ -1,12 +1,12 @@
 app.controller("homeController", function ($scope, $state) {
-  var vm = this;
+    var vm = this;
 
-  // properties
+    // properties
 
-  // methods
-  vm.onEnter = onEnter;
+    // methods
+    vm.onEnter = onEnter;
 
-  function onEnter() {
-    $state.go("employeeList");
-  }
+    function onEnter() {
+        $state.go("employeeList");
+    }
 });
