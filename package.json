@@ -4,7 +4,7 @@
   "description": "sample application using AngularJs",
   "main": "index.js",
   "scripts": {
-    "start": "live-server",
+    "start": "grunt start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,5 +21,9 @@
     "angular": "^1.8.0",
     "angular-ui-router": "0.4.2",
     "bootstrap": "^3.4.1"
+  },
+  "devDependencies": {
+    "grunt": "^1.2.1",
+    "grunt-contrib-connect": "^3.0.0"
   }
 }

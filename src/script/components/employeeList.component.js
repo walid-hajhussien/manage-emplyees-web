@@ -13,26 +13,14 @@ app.component("employeeList", {
       $scope.search = "";
       $scope.sort = "";
       $scope.sortType = false;
-      $scope.headerClass = {
-        "name.first": "",
-        email: "",
-        phone: "",
-        address: "",
-      };
 
       // methods
-      $scope.onAdd = onAdd;
       $scope.onDelete = onDelete;
       $scope.onChangeSort = onChangeSort;
 
       this.$onInit = function () {
         $scope.employeeList = employeeService.getList();
       };
-
-      // add new employee
-      function onAdd() {
-        $state.go("new");
-      }
 
       // delete employee
       function onDelete(id) {
@@ -47,18 +35,6 @@ app.component("employeeList", {
           $scope.sortType = false;
           $scope.sort = columnName;
         }
-        setClassSort(columnName);
-      }
-
-      // change the class based on the sort
-      function setClassSort(columnName) {
-        $scope.headerClass.email = "";
-        $scope.headerClass.phone = "";
-        $scope.headerClass.address = "";
-        $scope.headerClass["name.first"] = "";
-        $scope.headerClass[columnName] = $scope.sortType
-          ? "sortUp"
-          : "sortDown";
       }
     },
   ],

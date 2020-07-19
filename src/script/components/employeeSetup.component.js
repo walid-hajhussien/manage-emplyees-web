@@ -7,7 +7,7 @@ app.component("employeeSetup", {
   controller: [
     "$state",
     "employeeService",
-    function ($state, employeeService, employee) {
+    function ($state, employeeService) {
       var vm = this;
 
       // properties
