@@ -43,16 +43,6 @@ app.controller("employeeListController", [
         $scope.sortType = false;
         $scope.sort = columnName;
       }
-      setClassSort(columnName);
-    }
-
-    // change the class based on the sort
-    function setClassSort(columnName) {
-      $scope.headerClass.email = "";
-      $scope.headerClass.phone = "";
-      $scope.headerClass.address = "";
-      $scope.headerClass["name.first"] = "";
-      $scope.headerClass[columnName] = $scope.sortType ? "sortUp" : "sortDown";
     }
   },
 ]);

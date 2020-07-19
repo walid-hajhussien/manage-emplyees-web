@@ -7,7 +7,7 @@ app.component("employeeList", {
     "employeeService",
     "$state",
     "data",
-    function ($scope, employeeService, $state, data) {
+    function ($scope, employeeService, $state) {
       // properties
       $scope.employeeList = [];
       $scope.search = "";

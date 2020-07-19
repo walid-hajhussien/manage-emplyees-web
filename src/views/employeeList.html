@@ -46,16 +46,28 @@
                   <tr>
                     <th scope="col">#</th>
                     <th ng-click="onChangeSort('name.first')" scope="col">
-                      Full name <i ng-class="headerClass['name.first']"></i>
+                      Full name
+                      <i
+                        ng-class="{sortUp : sort==='name.first' && sortType,sortDown:sort==='name.first' && !sortType }"
+                      ></i>
                     </th>
                     <th ng-click="onChangeSort('email')" scope="col">
-                      Email <i ng-class="headerClass.email"></i>
+                      Email
+                      <i
+                        ng-class="{sortUp : sort==='email' && sortType,sortDown:sort==='email' && !sortType }"
+                      ></i>
                     </th>
                     <th ng-click="onChangeSort('phone')" scope="col">
-                      Phone <i ng-class="headerClass.phone"></i>
+                      Phone
+                      <i
+                        ng-class="{sortUp : sort==='phone' && sortType,sortDown:sort==='phone' && !sortType }"
+                      ></i>
                     </th>
                     <th ng-click="onChangeSort('address')" scope="col">
-                      Address <i ng-class="headerClass.address"></i>
+                      Address
+                      <i
+                        ng-class="{sortUp : sort==='address' && sortType,sortDown:sort==='address' && !sortType }"
+                      ></i>
                     </th>
                     <th scope="col">
                       Edit

@@ -13,23 +13,22 @@ angular.module("app").service("employeeService", function ($http, $q) {
   self.addCustomer = addCustomer;
   self.editCustomer = editCustomer;
   self.deleteCustomerById = deleteCustomerById;
-  self.deleteCustomerByIndex = deleteCustomerByIndex;
 
   // get the data from a backend then saves the data to a local list
   function setList() {
     let deferred = $q.defer();
     if (_isRetrieve) {
-      deferred.resolve([..._list]);
+      deferred.resolve(angular.copy(_list));
     } else {
       $http.get("src/assets/mock-data/data.json").then(
         (response) => {
           _list = response.data;
           _isRetrieve = true;
-          deferred.resolve([..._list]);
+          deferred.resolve(angular.copy(_list));
         },
         (error) => {
           _list = [];
-          deferred.reject([..._list]);
+          deferred.reject(angular.copy(_list));
         }
       );
     }
@@ -39,12 +38,12 @@ angular.module("app").service("employeeService", function ($http, $q) {
 
   // get the data from saved list
   function getList() {
-    return [..._list];
+    return angular.copy(_list);
   }
 
   // retrieves a customer from the saved list, filter should be using customer ID
   function getCustomerById(id) {
-    return [..._list].find((value) => {
+    return angular.copy(_list).find((value) => {
       return value._id === id;
     });
   }
@@ -55,14 +54,10 @@ angular.module("app").service("employeeService", function ($http, $q) {
   }
 
   function editCustomer(updateCustomer) {
-    _list = _list.map((customer) => {
-      return updateCustomer._id === customer._id ? updateCustomer : customer;
+    var index = _list.findIndex((element) => {
+      return element._id === updateCustomer._id;
     });
-  }
-
-  function deleteCustomerByIndex(index) {
-    _list.splice(index, 1);
-    return [..._list];
+    _list.splice(index, 1, updateCustomer);
   }
 
   function deleteCustomerById(id) {
@@ -70,6 +65,6 @@ angular.module("app").service("employeeService", function ($http, $q) {
       return value._id !== id;
     });
 
-    return [..._list];
+    return angular.copy(_list);
   }
 });

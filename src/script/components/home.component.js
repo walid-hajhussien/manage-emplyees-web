@@ -3,15 +3,8 @@ app.component("home", {
   controllerAs: "vm",
   controller: [
     "$state",
-    function ($state) {
+    function () {
       var vm = this;
-
-      // methods
-      vm.onEnter = onEnter;
-
-      function onEnter() {
-        $state.go("employeeList");
-      }
     },
   ],
 });
