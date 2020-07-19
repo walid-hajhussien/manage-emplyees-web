@@ -19,7 +19,7 @@
   "homepage": "https://github.com/walid-hajhussien/manage-emplyees#readme",
   "dependencies": {
     "angular": "^1.8.0",
-    "angular-ui-router": "^1.0.26",
+    "angular-ui-router": "0.4.2",
     "bootstrap": "^3.4.1"
   }
 }

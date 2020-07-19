@@ -1,68 +1,58 @@
-app.controller("employeeListController", function (
-  $scope,
-  employeeService,
-  $state,
-  data
-) {
-  var vm = this;
+app.controller("employeeListController", [
+  "$scope",
+  "employeeService",
+  "$state",
+  "data",
+  function ($scope, employeeService, $state, data) {
+    // properties
+    $scope.employeeList = [];
+    $scope.search = "";
+    $scope.sort = "";
+    $scope.sortType = false;
+    $scope.headerClass = {
+      "name.first": "",
+      email: "",
+      phone: "",
+      address: "",
+    };
 
-  // properties
-  vm.employeeList = [];
-  vm.search = "";
-  vm.sort = "";
-  vm.sortType = false;
-  vm.headerClass = {
-    "name.first": "",
-    email: "",
-    phone: "",
-    address: "",
-  };
+    // methods
+    $scope.onAdd = onAdd;
+    $scope.onDelete = onDelete;
+    $scope.onChangeSort = onChangeSort;
 
-  // methods
-  vm.onAdd = onAdd;
-  vm.onDelete = onDelete;
-  vm.onEdit = onEdit;
-  vm.onChangeSort = onChangeSort;
+    this.$onInit = function () {
+      $scope.employeeList = employeeService.getList();
+    };
 
-  this.$onInit = function () {
-    vm.employeeList = employeeService.getList();
-    console.log(data);
-  };
-
-  // add new employee
-  function onAdd() {
-    $state.go("new");
-  }
-
-  // delete employee
-  function onDelete(index) {
-    vm.employeeList = employeeService.deleteCustomerByIndex(index);
-  }
-
-  // Edit employee
-  function onEdit(employeeId) {
-    console.log(employeeId);
-    $state.go("edit", {
-      id: employeeId,
-    });
-  }
-
-  // change list sort
-  function onChangeSort(columnName) {
-    if (vm.sort === columnName) {
-      vm.sortType = !vm.sortType;
-    } else {
-      vm.sortType = false;
-      vm.sort = columnName;
+    // add new employee
+    function onAdd() {
+      $state.go("new");
     }
-    setClassSort(columnName);
-  }
 
-  function setClassSort(columnName) {
-    vm.headerClass.email = "";
-    vm.headerClass.phone = "";
-    vm.headerClass.address = "";
-    vm.headerClass["name.first"] = "";
-    vm.headerClass[columnName] = vm.sortType ? "sortUp" : "sortDown";
-  }
-});
+    // delete employee
+    function onDelete(id) {
+      $scope.employeeList = employeeService.deleteCustomerById(id);
+    }
+
+    // change the list sort
+    function onChangeSort(columnName) {
+      if ($scope.sort === columnName) {
+        $scope.sortType = !$scope.sortType;
+      } else {
+        $scope.sortType = false;
+        $scope.sort = columnName;
+      }
+      setClassSort(columnName);
+    }
+
+    // change the class based on the sort
+    function setClassSort(columnName) {
+      $scope.headerClass.email = "";
+      $scope.headerClass.phone = "";
+      $scope.headerClass.address = "";
+      $scope.headerClass["name.first"] = "";
+      $scope.headerClass[columnName] = $scope.sortType ? "sortUp" : "sortDown";
+    }
+  },
+]);

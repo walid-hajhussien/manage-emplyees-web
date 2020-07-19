@@ -8,7 +8,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-you need to install the live server on your machin as below :
+you need to install the live server on your machine as below :
 
 ```
 npm install live-server
