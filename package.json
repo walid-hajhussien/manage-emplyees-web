@@ -4,6 +4,8 @@
   "description": "sample application using AngularJs",
   "main": "index.js",
   "scripts": {
+    "preinstall": "npm install live-server -g",
+    "start": "live-server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,7 +21,6 @@
   "dependencies": {
     "angular": "^1.8.0",
     "angular-ui-router": "^1.0.26",
-    "bootstrap": "^3.4.1",
-    "jquery": "^3.5.1"
+    "bootstrap": "^3.4.1"
   }
 }
