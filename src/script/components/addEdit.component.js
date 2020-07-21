@@ -30,6 +30,12 @@ app.component("addEdit", {
       // add & update the employee based on the mode
       vm.onSave = function onSave(form) {
         if (vm.mode === "edit") {
+          if (form.$invalid) {
+            form.fullName.$touched = true;
+            form.email.$touched = true;
+            form.address.$touched = true;
+            return;
+          }
           var index = vm.fullName.indexOf(" ");
           vm.employee.name.first = vm.fullName.slice(0, index);
           vm.employee.name.last =
@@ -37,6 +43,13 @@ app.component("addEdit", {
           employeeService.editCustomer(vm.employee);
           $state.go("employeeList");
         } else {
+          if (form.$invalid) {
+            form.firstName.$touched = true;
+            form.lastName.$touched = true;
+            form.email.$touched = true;
+            form.address.$touched = true;
+            return;
+          }
           employeeService.addCustomer(vm.employee);
           $state.go("employeeList");
         }

@@ -8,9 +8,7 @@
           <div class="pull-right">
             <button
               ng-click="vm.onSave(employeeForm)"
-              ng-disabled="employeeForm.$invalid"
-              class="btn btn-default"
-              id="save-button"
+              class="btn btn-default save-button"
               type="button"
             >
               <span class="glyphicon glyphicon-floppy-disk"></span>
@@ -73,7 +71,7 @@
                   />
                   <small
                     class="warning"
-                    ng-show="employeeForm.fullName.$touched && employeeForm.fullName.$invalid"
+                    ng-show="employeeForm.fullName.$touched && (employeeForm.fullName.$invalid || vm.fullName.split(' ').length<2)"
                     >Full Name is mandatory</small
                   >
                 </div>

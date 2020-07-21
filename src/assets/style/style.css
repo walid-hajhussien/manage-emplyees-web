@@ -57,7 +57,7 @@ table > thead > tr > th {
   padding: 3px;
 }
 
-#save-button {
+.save-button {
   width: 35px;
   padding: 2px;
 }
@@ -80,7 +80,12 @@ table > thead > tr > th {
   margin: auto;
 }
 
-#enterButton {
+.enterButton {
   width: 250px;
   border-radius: 66px;
+}
+
+.anchorButton {
+  padding-bottom: 1px;
+  padding-top: 2px;
 }

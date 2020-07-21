@@ -22,7 +22,9 @@ angular.module("app").service("employeeService", function ($http, $q) {
     } else {
       $http.get("src/assets/mock-data/data.json").then(
         (response) => {
-          _list = response.data;
+          _list = response.data.filter((employee) => {
+            return employee.isActive;
+          });
           _isRetrieve = true;
           deferred.resolve(angular.copy(_list));
         },
@@ -49,7 +51,8 @@ angular.module("app").service("employeeService", function ($http, $q) {
   }
 
   function addCustomer(newCustomer) {
-    newCustomer._id = _counter++;
+    _counter++;
+    newCustomer._id = _counter.toString();
     _list.push(newCustomer);
   }
 

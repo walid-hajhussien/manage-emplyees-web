@@ -7,7 +7,7 @@
         <div class="panel-heading">
           Employee List
           <div class="pull-right">
-            <a ui-sref="new">
+            <a ui-sref="new" class="btn btn-default anchorButton">
               <span class="glyphicon glyphicon-plus"></span>
             </a>
           </div>
@@ -74,7 +74,6 @@
                 <tbody>
                   <tr
                     ng-repeat="employee in employeeList  | filter:{ address: search} | orderBy:sort:sortType track by $index"
-                    ng-if="employee.isActive"
                   >
                     <th scope="row">{{$index + 1}}</th>
                     <td>{{employee.name.first + ' ' + employee.name.last}}</td>
@@ -82,12 +81,18 @@
                     <td>{{employee.phone}}</td>
                     <td>{{employee.address}}</td>
                     <td>
-                      <a ui-sref="edit({id:employee._id})">
+                      <a
+                        ui-sref="edit({id:employee._id})"
+                        class="btn btn-default"
+                      >
                         <span class="glyphicon glyphicon-pencil"></span>
                       </a>
                     </td>
                     <td>
-                      <a ng-click="onDelete(employee._id)" class="clickable">
+                      <a
+                        ng-click="onDelete(employee._id)"
+                        class="clickable btn btn-default"
+                      >
                         <span class="glyphicon glyphicon-trash"></span>
                       </a>
                     </td>

@@ -14,7 +14,6 @@ app.controller("employeeListController", [
 
     this.$onInit = function () {
       $scope.employeeList = employeeService.getList();
-      console.log($scope.employeeList);
     };
 
     // add new employee
