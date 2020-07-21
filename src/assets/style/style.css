@@ -4,6 +4,10 @@ body {
   overflow: hidden;
 }
 
+.clickable {
+  cursor: pointer;
+}
+
 .center-screen {
   display: flex;
   flex-direction: column;
@@ -36,7 +40,7 @@ table > thead > tr > th {
 }
 
 /*Order by Icon*/
-.sortUp{
+.sortUp {
   transform: rotate(-135deg);
   -webkit-transform: rotate(-135deg);
   border: solid black;
@@ -44,11 +48,39 @@ table > thead > tr > th {
   display: inline-block;
   padding: 3px;
 }
-.sortDown{
+.sortDown {
   transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
   border: solid black;
   border-width: 0 3px 3px 0;
   display: inline-block;
   padding: 3px;
+}
+
+#save-button {
+  width: 35px;
+  padding: 2px;
+}
+
+.panelRow {
+  margin-top: 15px;
+}
+
+.panelColumn {
+  margin-bottom: 16px;
+}
+
+.required {
+  color: red;
+  font-size: medium;
+}
+
+.inputField {
+  width: 50%;
+  margin: auto;
+}
+
+#enterButton {
+  width: 250px;
+  border-radius: 66px;
 }

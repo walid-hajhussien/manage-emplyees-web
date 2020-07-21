@@ -8,20 +8,14 @@
           Employee List
           <div class="pull-right">
             <a ui-sref="new">
-              <button
-                class="btn btn-default"
-                type="button"
-                style="width: 35px; padding: 2px;"
-              >
-                <span class="glyphicon glyphicon-plus"></span>
-              </button>
+              <span class="glyphicon glyphicon-plus"></span>
             </a>
           </div>
         </div>
 
         <div class="panel-body">
           <form>
-            <div class="input-group" style="width: 50%; margin: auto;">
+            <div class="input-group inputField">
               <input
                 type="search"
                 class="form-control"
@@ -39,7 +33,7 @@
             </div>
           </form>
 
-          <div class="row" style="margin-top: 15px;">
+          <div class="row panelRow">
             <div class="col-md-12">
               <table class="table table-striped">
                 <thead>
@@ -80,6 +74,7 @@
                 <tbody>
                   <tr
                     ng-repeat="employee in employeeList  | filter:{ address: search} | orderBy:sort:sortType track by $index"
+                    ng-if="employee.isActive"
                   >
                     <th scope="row">{{$index + 1}}</th>
                     <td>{{employee.name.first + ' ' + employee.name.last}}</td>
@@ -88,15 +83,13 @@
                     <td>{{employee.address}}</td>
                     <td>
                       <a ui-sref="edit({id:employee._id})">
-                        <button>
-                          <span class="glyphicon glyphicon-pencil"></span>
-                        </button>
+                        <span class="glyphicon glyphicon-pencil"></span>
                       </a>
                     </td>
                     <td>
-                      <button ng-click="onDelete(employee._id)">
+                      <a ng-click="onDelete(employee._id)" class="clickable">
                         <span class="glyphicon glyphicon-trash"></span>
-                      </button>
+                      </a>
                     </td>
                   </tr>
                 </tbody>

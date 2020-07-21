@@ -4,7 +4,7 @@
   "description": "sample application using AngularJs",
   "main": "index.js",
   "scripts": {
-    "start": "grunt start",
+    "start": "grunt",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

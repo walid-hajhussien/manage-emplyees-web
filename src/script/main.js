@@ -23,7 +23,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
   // editEmployee
   $stateProvider.state("edit", {
     url: "/edit/:id",
-    template: "<employee-setup employee='$resolve.employee'></employee-setup>",
+    template: "<add-edit employee='$resolve.employee'></add-edit>",
     resolve: {
       employee: function (employeeService, $stateParams) {
         let id = $stateParams.id;
@@ -35,7 +35,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
   // add new Employee
   $stateProvider.state("new", {
     url: "/new",
-    template: "<employee-setup></employee-setup>",
+    template: "<add-edit></add-edit>",
   });
 
   // url not found redirect to home

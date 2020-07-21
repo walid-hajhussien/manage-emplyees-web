@@ -7,8 +7,8 @@ app.controller("employeeListController", [
     // properties
     $scope.employeeList = [];
     $scope.search = "";
-    $scope.sort = "";
-    $scope.sortType = false;
+    $scope.sort = "name.first";
+    $scope.sortType = true;
     $scope.headerClass = {
       "name.first": "",
       email: "",
@@ -23,6 +23,7 @@ app.controller("employeeListController", [
 
     this.$onInit = function () {
       $scope.employeeList = employeeService.getList();
+      console.log($scope.employeeList);
     };
 
     // add new employee
