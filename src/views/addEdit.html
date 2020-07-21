@@ -22,7 +22,7 @@
           <form name="employeeForm">
             <div class="row panelRow">
               <div class="col-md-12 panelColumn">
-                <div class="col-md-4">
+                <div class="col-md-4" ng-if="vm.mode==='new'">
                   <label class="label-floating" for="firstName"
                     ><span class="required">*&nbsp</span>First Name</label
                   >
@@ -41,7 +41,7 @@
                   >
                 </div>
 
-                <div class="col-md-4">
+                <div class="col-md-4" ng-if="vm.mode==='new'">
                   <label class="label-floating" for="lastName"
                     ><span class="required">*&nbsp</span>Last Name</label
                   >
@@ -59,7 +59,27 @@
                     >Last name is mandatory</small
                   >
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-6" ng-if="vm.mode==='edit'">
+                  <label class="label-floating" for="lastName"
+                    ><span class="required">*&nbsp</span>Full Name</label
+                  >
+                  <input
+                    name="fullName"
+                    id="fullName"
+                    type="text"
+                    class="form-control"
+                    ng-required="true"
+                    ng-model="vm.fullName"
+                  />
+                  <small
+                    class="warning"
+                    ng-show="employeeForm.fullName.$touched && employeeForm.fullName.$invalid"
+                    >Full Name is mandatory</small
+                  >
+                </div>
+                <div
+                  ng-class="{'col-md-4' :vm.mode==='new','col-md-6': vm.mode==='edit' }"
+                >
                   <label class="label-floating" for="email"
                     ><span class="required">*&nbsp</span>Email</label
                   >
@@ -91,8 +111,13 @@
                   />
                   <small
                     class="warning"
-                    ng-show="employeeForm.phone.$touched && employeeForm.phone.$invalid"
+                    ng-show="employeeForm.phone.$touched && employeeForm.phone.$viewValue === ''"
                     >phone number is mandatory</small
+                  >
+                  <small
+                    class="warning"
+                    ng-show="employeeForm.phone.$viewValue !== '' && employeeForm.phone.$invalid"
+                    >phone number is invalid</small
                   >
                 </div>
 

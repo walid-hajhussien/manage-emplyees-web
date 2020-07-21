@@ -12,13 +12,11 @@ app.component("addEdit", {
 
       // properties
 
-      // methods
-      vm.onSave = onSave;
-
       this.$onInit = function () {
         if (vm.employee) {
           vm.mode = "edit";
           vm.title = "Edit Employee";
+          vm.fullName = vm.employee.name.first + " " + vm.employee.name.last;
         } else {
           vm.employee = {};
           vm.employee.isActive = true;
@@ -27,16 +25,22 @@ app.component("addEdit", {
         }
       };
 
+      // methods
+
       // add & update the employee based on the mode
-      function onSave(form) {
+      vm.onSave = function onSave(form) {
         if (vm.mode === "edit") {
+          var index = vm.fullName.indexOf(" ");
+          vm.employee.name.first = vm.fullName.slice(0, index);
+          vm.employee.name.last =
+            index !== -1 ? vm.fullName.slice(index + 1) : "";
           employeeService.editCustomer(vm.employee);
           $state.go("employeeList");
         } else {
           employeeService.addCustomer(vm.employee);
           $state.go("employeeList");
         }
-      }
+      };
     },
   ],
 });

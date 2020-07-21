@@ -11,16 +11,15 @@ app.component("header", {
       var vm = this;
 
       // methods
-      vm.onNavigate = onNavigate;
 
       // navigate to the new route
-      function onNavigate() {
+      vm.onNavigate = function onNavigate() {
         if (vm.mode === "list") {
           $state.go("home");
         } else {
           $state.go("employeeList");
         }
-      }
+      };
     },
   ],
 });

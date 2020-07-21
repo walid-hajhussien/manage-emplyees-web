@@ -9,17 +9,8 @@ app.controller("employeeListController", [
     $scope.search = "";
     $scope.sort = "name.first";
     $scope.sortType = true;
-    $scope.headerClass = {
-      "name.first": "",
-      email: "",
-      phone: "",
-      address: "",
-    };
 
     // methods
-    $scope.onAdd = onAdd;
-    $scope.onDelete = onDelete;
-    $scope.onChangeSort = onChangeSort;
 
     this.$onInit = function () {
       $scope.employeeList = employeeService.getList();
@@ -27,23 +18,23 @@ app.controller("employeeListController", [
     };
 
     // add new employee
-    function onAdd() {
+    $scope.onAdd = function onAdd() {
       $state.go("new");
-    }
+    };
 
     // delete employee
-    function onDelete(id) {
+    $scope.onDelete = function onDelete(id) {
       $scope.employeeList = employeeService.deleteCustomerById(id);
-    }
+    };
 
     // change the list sort
-    function onChangeSort(columnName) {
+    $scope.onChangeSort = function onChangeSort(columnName) {
       if ($scope.sort === columnName) {
         $scope.sortType = !$scope.sortType;
       } else {
         $scope.sortType = false;
         $scope.sort = columnName;
       }
-    }
+    };
   },
 ]);
